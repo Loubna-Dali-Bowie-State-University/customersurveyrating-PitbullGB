@@ -1,39 +1,56 @@
 import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0 ;
+        int total = 0;
+        int sum = 0;
 
-public class CustomerSurvey {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // TODO: Declare necessary variables (e.g., to hold rating counts, total number of ratings, sum, etc.)
-        // TODO: Declare a flag for detecting if any 5-star rating was entered
-
-        System.out.println("Welcome to Customer Survey! Enter ratings from 1 to 5 (enter -1 to stop):");
-
-        // Sentinel-Controlled Loop to collect customer ratings
+        System.out.println("Enter ratings between 1 and 5 (enter -1 to stop):");
         while (true) {
-            // TODO: Prompt user to enter a rating
-            // TODO: Read the rating input
-
-            // TODO: Check if the sentinel value (-1) was entered, and break if true
-
-            // TODO: Validate that the rating is between 1 and 5
-            // If invalid, display an error message and continue to the next iteration
-
-            // TODO: Process valid rating: 
-            // - Update counters for each rating
-            // - Add rating to the total for average calculation
-            // - If rating is 5, set the flag to indicate a 5-star rating was received
+            int rating = scan.nextInt(); 
+            if (rating == -1) {
+                break;
+            }
+            
+            if (rating >= 1 && rating <= 5) {
+                total++;       
+                sum += rating;   
+    
+                if (rating == 1) {
+                    count1++;
+                } else if (rating == 2) {
+                    count2++;
+                } else if (rating == 3) {
+                    count3++;
+                } else if (rating == 4) {
+                    count4++;
+                } else if (rating == 5) {
+                    count5++;
+                    System.out.println("Excellent rating"); 
+            } else {
+                
+                System.out.println("Error. Enter rating between 1 and 5.");
+            }
         }
 
-        // Summary Report
-        System.out.println("\nSummary Report:");
         
-        // TODO: Display the total number of ratings
+        double average = (total > 0) ? (double) sum / total : 0.0;
 
-        // TODO: Calculate and display the average rating, if any ratings were entered
+       
+        System.out.println("Summary report:");
+        System.out.println("Total number of ratings: " + total);
+        System.out.println("Average rating: " + average);
+        System.out.println("1-star ratings: " + count1);
+        System.out.println("2-star ratings: " + count2);
+        System.out.println("3-star ratings: " + count3);
+        System.out.println("4-star ratings: " + count4);
+        System.out.println("5-star ratings: " + count5);
 
-        // TODO: Display the count for each rating (1-star to 5-star) without using arrays
 
-        scanner.close(); // Close the scanner
-    }
+        scan.close();
+        }
+	}
 }
+
